@@ -1,0 +1,63 @@
+{
+  "name": "[name]",
+  "displayName": "template vscode ext",
+  "description": "template for vscode extension",
+  "version": "0.0.0",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./out/test/runTest.js",
+    "lint:eslint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts",
+    "prettier": "prettier --no-editorconfig --config-precedence prefer-file \"**/*.{js,cjs,mjs,ts,cts,mts,json,jsonc,jsx,tsx,css,less,scss,styl,vue,html,md}\"",
+    "fix:eslint": "npm run lint:eslint -- --fix",
+    "fix:prettier": "npm run prettier -- --write",
+    "package": "yes | vsce package --no-dependencies --allow-star-activation",
+    "publish": "yes | vsce publish --no-dependencies --allow-star-activation",
+    "vscode:prepublish": "npm run compile",
+    "release": "bumpp --commit --push --tag && npm run package && npm run publish"
+  },
+  "author": "BTB",
+  "publisher": "BTBest",
+  "license": "MIT",
+  "keywords": [],
+  "engines": {
+    "vscode": "^1.66.0"
+  },
+  "icon": "images/logo.png",
+  "categories": [
+    "Other"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BTBMan/[name]"
+  },
+  "bugs": {
+    "url": "https://github.com/BTBMan/[name]/issues"
+  },
+  "homepage": "https://github.com/BTBMan/[name]#readme",
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:template.hello"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "template.hello",
+        "title": "template for vscode extension",
+        "category": "template-vscode-ext"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "14.x",
+    "@types/vscode": "^1.66.0",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "@vscode/test-electron": "^2.1.3",
+    "bumpp": "^7.1.1",
+    "eslint": "^8.11.0",
+    "typescript": "^4.5.5"
+  }
+}
