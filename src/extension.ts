@@ -5,5 +5,8 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand('template.hello', () => {
       console.log('object');
     }),
+    vscode.commands.registerTextEditorCommand('type', (...arg) => {
+      console.log('register test editor command', arg);
+    }),
   );
 }
